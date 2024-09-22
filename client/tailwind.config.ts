@@ -9,14 +9,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      
       animation: {
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        move: "move 5s linear infinite",
       },
       keyframes: {
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        move: {
+          "0%": { transform: "translateX(-200px)" },
+          "100%": { transform: "translateX(200px)" },
         },
         "marquee-vertical": {
           from: { transform: "translateY(0)" },
