@@ -59,13 +59,6 @@ export default function ImageUpload() {
     }
   };
 
-  const handleLogOut = () => {
-    fetch("/api/admin/logout").then(() => {
-      setIsAuthenticated(false);
-      window.location.reload(); 
-    });
-  };
-
   const handleFileUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!file) return;
@@ -131,34 +124,28 @@ export default function ImageUpload() {
   }
 
   return (
-    <div className="flex justify-center items-center flex-col w-full max-w-4xl mx-auto min-h-96 p-6 bg-white dark:bg-black border border-dashed border-neutral-200 dark:border-neutral-800 rounded-lg shadow-md mt-10">
+    <div className="relative p-6">
+    <div className="flex justify-center items-center flex-col w-full max-w-4xl mx-auto min-h-96 p-6 bg-white border border-dashed rounded-lg shadow-md mt-20">
       <h2 className="text-2xl font-semibold mb-4">Upload Image</h2>
-      <Button
-        className="w-full bg-purple-500 hover:bg-purple-600 text-white"
-        onClick={handleLogOut}
-      >
-        Logout
-      </Button>
-      <form onSubmit={handleFileUpload} className="flex flex-col">
+      <form onSubmit={handleFileUpload} className="flex flex-col w-full">
         <FileUpload onChange={handleFileChange} />
         {uploading && <p className="mt-4 text-blue-500">Uploading...</p>}
         {uploadResult && (
           <p
-            className={`mt-4 ${
-              uploadResult.success ? "text-green-500" : "text-red-500"
-            }`}
+            className={`mt-4 ${uploadResult.success ? "text-green-500" : "text-red-500"}`}
           >
             {uploadResult.message}
           </p>
         )}
-        <button
+        <Button
           type="submit"
           disabled={uploading || !file}
           className="mt-4 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 transition"
         >
           {uploading ? "Uploading..." : "Upload"}
-        </button>
+        </Button>
       </form>
     </div>
-  );
+  </div>
+);
 }
