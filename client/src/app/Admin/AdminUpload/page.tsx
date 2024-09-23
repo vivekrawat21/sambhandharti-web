@@ -1,9 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileUpload } from "@/components/ui/file-upload";
-import { Input } from "@/components/ui/input";
 import { useState, useEffect } from "react";
 
 export default function ImageUpload() {
@@ -13,52 +11,15 @@ export default function ImageUpload() {
     success: boolean;
     message: string;
   } | null>(null);
-  const [password, setPassword] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const response = await fetch("/api/admin/verify");
-        const data = await response.json();
-        if (data.authenticated) {
-          setIsAuthenticated(true);
-        }
-      } catch (error) {
-        console.error("Authentication check failed:", error);
-        setIsAuthenticated(false);
-      }
-    };
-
-    checkAuth();
-  }, []);
-
+ 
   const handleFileChange = (files: File[]) => {
     if (files.length > 0) {
       setFile(files[0]);
     }
   };
 
-  const handlePasswordSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("/api/admin/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setIsAuthenticated(true);
-      } else {
-        alert(data.error || "Login failed");
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("An error occurred during login");
-    }
-  };
-
+ 
   const handleFileUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!file) return;
@@ -94,34 +55,6 @@ export default function ImageUpload() {
       setUploading(false);
     }
   };
-
-  if (!isAuthenticated) {
-    return (
-      <div className="flex justify-center items-center h-[70vh] ">
-        <Card className="p-8 w-[400px]">
-          <CardHeader>
-            <CardTitle className="text-2xl font-semibold mb-4">
-              Admin Login
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handlePasswordSubmit}>
-              <Input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter admin password"
-                className="w-full mb-4"
-              />
-              <Button type="submit" className="w-full">
-                Login
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
 
   return (
     <div className="relative p-6">
