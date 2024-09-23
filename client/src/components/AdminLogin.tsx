@@ -4,13 +4,20 @@ import React, { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/navigation'
+import LoadingSpinner from './LoadingSpinner'
 
 const AdminLogin = () => {
     const [password, setPassword] = useState("");
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter()
 
     const handlePasswordSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsLoading(true); 
         try {
             const response = await fetch("/api/admin/login", {
                 method: "POST",
@@ -20,13 +27,22 @@ const AdminLogin = () => {
             const data = await response.json();
             if (response.ok) {
                 setIsAuthenticated(true);
-                window.location.reload()
+
+                toast.success('Login successful! Redirecting...');
+
+                setTimeout(() => {
+                    router.push('/Admin');
+                    window.location.reload();
+                }, 1500);
             } else {
-                alert(data.error || "Login failed");
+                toast.error(data.error || "Login failed");
             }
+
         } catch (error) {
             console.error("Login error:", error);
-            alert("An error occurred during login");
+            toast.error("An error occurred during login");
+        } finally {
+            setIsLoading(false); 
         }
     };
 
@@ -44,11 +60,15 @@ const AdminLogin = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter your password"
                             className="w-full mb-4"
+                            disabled={isLoading} 
                         />
-                        <Button type="submit" className="w-full">Submit</Button>
+                        <Button type="submit" className="w-full" disabled={isLoading}>
+                            {isLoading ? <LoadingSpinner /> : "Login"} 
+                        </Button>
                     </form>
                 </CardContent>
             </Card>
+            <ToastContainer />
         </div>
     )
 }
