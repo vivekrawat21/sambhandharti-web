@@ -8,7 +8,7 @@ import FounderNote from "@/components/FounderNote";
 
 const page = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       <Hero className="relative z-10 min-h-[60vh]" />
       <Carousel className="relative z-0 sm:mt-0 mt-44 overflow-hidden" />
       <Testimonials/>
