@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Sambharndaharti ",
@@ -26,6 +27,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
