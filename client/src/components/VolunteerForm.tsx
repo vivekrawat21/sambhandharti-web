@@ -14,7 +14,7 @@ interface VolunteerFormValues {
   paymentMethod: string;
 }
 
-export default function VolunteerForm ({className}:any)  {
+export default function VolunteerForm ()  {
   const [formValues, setFormValues] = useState<VolunteerFormValues>({
     name: '',
     phoneNumber: '',
@@ -37,7 +37,7 @@ export default function VolunteerForm ({className}:any)  {
   };
 
   return (
-    <div className="w-[70%] h-[80vh] mx-auto flex items-center justify-center lg:w-[60%] xl:w-[40%]">
+    <div className={`w-[70%] mx-auto flex items-center justify-center lg:w-[60%] xl:w-[40%] `}>
       <div className="p-16 bg-white shadow-xl rounded-xl w-full">
         <form className="space-y-6" onSubmit={handleSubmit}>
           <Input 
