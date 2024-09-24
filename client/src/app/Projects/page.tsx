@@ -1,8 +1,12 @@
 import React from 'react'
 
+
+
 const page = () => {
   return (
-    <div>Projects Page</div>
+    <div className='min-h-w'>
+   
+    </div>
   )
 }
 
