@@ -13,7 +13,7 @@ const page = () => {
       <Carousel className="relative z-0 sm:mt-0 mt-44 overflow-hidden" />
       <Testimonials/>
       <FounderNote/>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

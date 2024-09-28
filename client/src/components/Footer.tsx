@@ -7,9 +7,10 @@ import { Separator } from "@/components/ui/separator"
 
 const Footer = () => {
   return (
-<div className="py-10 mt-6 pb-2 w-full ">
+<div className="py-10 mt-10 pb-2 w-full  ">
+  {/* margin -top 10 removed */}
 <Separator className="mb-4 w-[60%] mx-auto" />
-  <div className="mb-1 mx-auto w-[90%] sm:w-[80%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-8 gap-4 md:gap-2">
+  <div className="mb-1 mx-auto w-[90%] sm:w-[80%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-8 gap-4 md:gap-2">
     {/* Logo and Description */}
     <div className="md:col-span-4 text-gray-600">
       <Link href="/" target="_blank" className="flex items-center mb-2">
