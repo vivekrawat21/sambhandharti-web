@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 
 
 export const metadata: Metadata = {
-  title: "Sambharndaharti ",
-  description: "Sambharndaharti is a platform for Helping others.",
+  title: "Sambandharthi ",
+  description: "Sambandharthi is a platform for Helping others.",
 };
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600"] });
