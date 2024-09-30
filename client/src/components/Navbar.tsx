@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Separator } from "./ui/separator";
 import { motion } from "framer-motion";
 import { MenuIcon, XIcon } from "lucide-react";
+import ShimmerButton from "./ui/shimmer-button";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,14 +46,14 @@ export default function Navbar() {
             </Link>
           ))}
 
-          <Link
-            href="/Donate"
-            className={cn(
-              "px-2 py-2 border border-neutral-600  rounded-full hover:bg-neutral-100 text-black "
-            )}
-          >
-            Donate Now
-          </Link>
+            <Link
+              href="/Donate"
+              onClick={toggleMenu}
+            >
+               <ShimmerButton>
+               Donate Now
+            </ShimmerButton>
+            </Link>
         </div>
 
         <div className="md:hidden">
@@ -93,7 +94,7 @@ export default function Navbar() {
             ))}
 
             <Link
-              href="/donate"
+              href="/Donate"
               className="mt-4 px-4 py-2 border border-neutral-600  rounded-full hover:bg-neutral-100 "
               onClick={toggleMenu}
             >
@@ -103,7 +104,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      <Separator className="mt-3" />
+      <Separator className="mt-5" />
     </>
   );
 }
