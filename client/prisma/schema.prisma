@@ -19,3 +19,12 @@ model UploadedFile {
   category  SafetyCategory @default(CHILDREN_SAFETY)
   uploadedAt DateTime @default(now())
 }
+
+model ContactMessage {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    name      String
+    email     String
+    phone     String
+    message   String?
+    createdAt DateTime @default(now())
+}

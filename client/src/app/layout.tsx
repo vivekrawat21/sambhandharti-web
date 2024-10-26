@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
+import TopBar from "@/components/topBar";
+
 
 
 export const metadata: Metadata = {
@@ -25,6 +27,7 @@ export default function RootLayout({
           poppins.className
         )}
       >
+        <TopBar />
         <Navbar />
         {children}
       </body>
