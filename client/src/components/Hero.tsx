@@ -25,7 +25,7 @@ const Hero = ({ className }: any) => {
 
       <div className="md:w-1/2 flex justify-center md:justify-end mt-10">
         <Image
-          src="https://pub-96d3131e0e7248bf8295a83f682993ab.r2.dev/Products-Videos/Proposalify-Img.png"
+          src="https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/ABOUT%201st%20PHOTO.jpg"
           alt="Helping Hands"
           width={600}
           height={600}
