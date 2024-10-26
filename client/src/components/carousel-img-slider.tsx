@@ -30,7 +30,7 @@ export default function CarouselSlider({
             }}
             plugins={[
               Autoplay({
-                delay: 3000, 
+                delay: 3000,
               }),
             ]}
           >
@@ -41,7 +41,7 @@ export default function CarouselSlider({
                   className="md:basis-1/2 lg:basis-1/3"
                 >
                   <div className="flex flex-col px-4 py-5 sm:p-6">
-                    <div className="relative w-full h-64 sm:h-80 lg:h-96">
+                    <div className="relative w-full h-64 sm:h-96 lg:h-96">
                       <Image
                         loader={imageLoader}
                         className="object-cover rounded-lg"

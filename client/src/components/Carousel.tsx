@@ -1,46 +1,47 @@
 import CarouselSlider from "@/components/carousel-img-slider";
 
 const GalleryData = [
-  {
-    quote: "",
-    name: "",
-    role: "",
-    imgSrc: "https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/CROUSEL%202ND%20PHOTO.jpg",
-    rating: 5,
-    feedback: "",
-  },
-  {
-    quote: "",
-    name: "",
-    role: "",
-    imgSrc: "https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/CROUSEL%203RD%20PHOTO.jpg",
-    rating: 5,
-    feedback: "",
-  },
-  {
-    quote: "",
-    name: "",
-    role: "",
-    imgSrc: "https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/CROUSEL%204TH%20PHOTO.jpg",
-    rating: 5,
-    feedback: "",
-  },
-  {
-    quote: "",
-    name: "",
-    role: "",
-    imgSrc: "https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/CROUSEL%205TH%20PHOTO.jpg",
-    rating: 5,
-    feedback: "",
-  },
-  {
-    quote: "",
-    name: "",
-    role: "",
-    imgSrc: "https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/CROUSEL%205TH%20PHOTO.jpg",
-    rating: 5,
-    feedback: "",
-  }
+    {
+        quote: "",
+        name: "",
+        role: "",
+        imgSrc: "https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/CROUSEL%201ST%20PHOTO.jpg",
+        rating: 5,
+        feedback: "",
+      },
+    {
+        quote: "",
+        name: "",
+        role: "",
+        imgSrc: "https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/CROUSEL%202ND%20PHOTO.jpg",
+        rating: 5,
+        feedback: "",
+    },
+    {
+        quote: "",
+        name: "",
+        role: "",
+        imgSrc: "https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/CROUSEL%203RD%20PHOTO.jpg",
+        rating: 5,
+        feedback: "",
+    },
+    {
+        quote: "",
+        name: "",
+        role: "",
+        imgSrc: "https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/CROUSEL%204TH%20PHOTO.jpg",
+        rating: 5,
+        feedback: "",
+    },
+    {
+        quote: "",
+        name: "",
+        role: "",
+        imgSrc: "https://pub-6287779f39b34278a82b57e687c0976f.r2.dev/website%20photos/home%20page/CROUSEL%205TH%20PHOTO.jpg",
+        rating: 5,
+        feedback: "",
+    },
+    
 ];
 
 export default function Carousel({ className }: any) {
