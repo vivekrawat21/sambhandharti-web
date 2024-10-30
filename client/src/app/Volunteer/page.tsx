@@ -3,10 +3,13 @@ import VolunteerForm from  '../../components/VolunteerForm'
 
 const page = () => {
   return (
-    <div className="flex flex-col justify-center  m p-4 mt-2 ">
-     <h1 className=" m-auto lg:mt-0  font-bold text-xl sm:text-4xl mb-5 text-violet-500">
-         Join Us for a Cause
-        </h1>
+    <div className="flex flex-col justify-center items-center p-4 mt-2 ">
+    <h1 className="text-3xl lg:text-3xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+              Join us for a{" "}
+              <span className="text-orange-600 dark:text-orange-400">
+                Good Cause
+              </span>
+            </h1>
    <VolunteerForm />
    </div>
   )
