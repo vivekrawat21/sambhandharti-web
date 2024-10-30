@@ -42,20 +42,6 @@ export default function FounderNote() {
                       those who want to help with those who need it most.
                     </p>
                   </div>
-
-                  <p>
-                    Our journey began with a simple mission: to provide quality education to every child,
-                    regardless of their circumstances. Today, that mission has expanded to include women's
-                    empowerment, community development, and sustainable change programs that have touched
-                    thousands of lives across India.
-                  </p>
-
-                  <p>
-                    What makes Sambandharthi unique is our grassroots approach. We believe that lasting
-                    change comes from within communities, and our role is to facilitate, support, and
-                    empower local leaders and changemakers. Every success story we share is a testament
-                    to the resilience and potential within our communities.
-                  </p>
                 </div>
               </div>
             </div>

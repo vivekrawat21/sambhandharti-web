@@ -35,14 +35,14 @@ export default function Hero({ className = "" }: { className?: string }) {
               <div className="flex items-center gap-2">
                 <GraduationCap className="w-8 h-8 text-orange-600 dark:text-orange-400" />
                 <div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">5+</div>
+                  <div className="text-2xl font-bold text-gray-900 dark:text-white">3+</div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Education Centers</div>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="w-8 h-8 text-orange-600 dark:text-orange-400" />
                 <div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">10+</div>
+                  <div className="text-2xl font-bold text-gray-900 dark:text-white">25+</div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Volunteers</div>
                 </div>
               </div>
