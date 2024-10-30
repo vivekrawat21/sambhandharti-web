@@ -1,59 +1,124 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Heart, Send } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 export default function DonationPage() {
-  return (
-    <div className="min-h-screen ">
-      <h1 className="text-2xl sm:text-4xl font-bold text-center text-violet-500 mt-10 mb-6">
-        Donation Form
-      </h1>
+    const [submitted, setSubmitted] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+    const [isLoading, setIsLoading] = useState(false)
 
-      <div className="container mx-auto px-4 lg:px-36">
-        <div className="flex flex-col md:flex-row gap-10 justify-center items-start  p-6 md:p-12">
-          
-          <div className="w-full md:w-1/2">
-            <img
-              src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"
-              alt="Donation"
-              className="rounded-lg shadow-md object-cover w-full h-60"
-            />
-            <div className="mt-6 text-sm text-gray-600">
-              <p>
-                Sambhandarti was established on 25th of May 2012. It is a
-                national level society with the vision of a prosperous nation.
-              </p>
-              <p className="mt-4">
-                You agree to share information with Sambhandarti and Razorpay,
-                adhering to applicable laws.
-              </p>
-            </div>
-          </div>
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setError(null)
+        setIsLoading(true)
 
-          <div className="w-full md:w-1/2">
-            <h3 className="text-xl font-semibold mb-6 text-gray-800">Payment Details</h3>
+        const formData = new FormData(e.currentTarget)
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            message: formData.get('message') || ''
+        }
 
-            <form className="space-y-4">
-              <Input placeholder="Name" className="w-full" required />
-              <Input type="email" placeholder="Email" className="w-full" required />
-              <Input type="tel" placeholder="Phone" className="w-full" required />
-              <Input type="number" placeholder="PAN" className="w-full" required />
-              <Input placeholder="Address (Optional)" className="w-full" />
-              <Textarea placeholder="Message (Optional)" className="w-full" />
-              <Input
-                type="number"
-                placeholder="₹ Enter Amount"
-                className="w-full"
-                required
-              />
-              <Button className="w-full bg-purple-500 hover:bg-purple-600 text-white">
-                Pay ₹ 0.00
-              </Button>
-            </form>
-          </div>
+        try {
+            const response = await fetch('/api/DonateTemp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+
+            if (!response.ok) {
+                const result = await response.json()
+                throw new Error(result.error || 'Something went wrong')
+            }
+
+            setSubmitted(true)
+        } catch (error:any) {
+            setError(error.message)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    return (
+        <div className="min-h-[80vh] flex items-center justify-center p-4">
+            <Card className="w-full max-w-md">
+                <CardHeader>
+                    <CardTitle className="text-2xl font-bold text-center text-gray-800 flex items-center justify-center">
+                        <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                        >
+                            <Heart className="w-6 h-6 text-red-500 mr-2" />
+                        </motion.div>
+                        Thank You for Your Interest!
+                    </CardTitle>
+                    <CardDescription className="text-center text-gray-600">
+                        We appreciate your willingness to donate. Please fill out the form below, and our volunteer will contact you about the payment process.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    {!submitted ? (
+                        <motion.form
+                            onSubmit={handleSubmit}
+                            className="space-y-4"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <div>
+                                <Label htmlFor="name">Name</Label>
+                                <Input id="name" name="name" placeholder="Your full name" required />
+                            </div>
+                            <div>
+                                <Label htmlFor="email">Email</Label>
+                                <Input id="email" name="email" type="email" placeholder="Your email address" required />
+                            </div>
+                            <div>
+                                <Label htmlFor="phone">Phone Number</Label>
+                                <Input id="phone" name="phone" type="tel" placeholder="Your phone number" required />
+                            </div>
+                            <div>
+                                <Label htmlFor="message">Message (Optional)</Label>
+                                <Textarea id="message" name="message" placeholder="Any additional information or preferred contact time..." />
+                            </div>
+                            {error && <p className="text-red-500 text-sm">{error}</p>}
+                            <Button type="submit" className="w-full" disabled={isLoading}>
+                                {isLoading ? <LoadingSpinner /> : 'Submit Details'}
+                            </Button>
+                        </motion.form>
+                    ) : (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                            className="text-center space-y-4"
+                        >
+                            <div className="flex items-center justify-center space-x-2 text-green-600">
+                                <Send className="w-5 h-5" />
+                                <span className="font-medium">Form Submitted Successfully!</span>
+                            </div>
+                            <p className="text-gray-600">
+                                Thank you for providing your details. Our volunteer will contact you shortly to discuss the donation process.
+                            </p>
+                        </motion.div>
+                    )}
+                </CardContent>
+                <CardFooter className="text-center text-sm text-gray-500">
+                    Your generosity makes a difference. Thank you for your support!
+                </CardFooter>
+            </Card>
         </div>
-      </div>
-    </div>
-  );
+    )
 }

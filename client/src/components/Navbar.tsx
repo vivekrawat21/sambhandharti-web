@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Separator } from "./ui/separator";
 import { motion } from "framer-motion";
 import { MenuIcon, XIcon } from "lucide-react";
+import ShimmerButton from "./ui/shimmer-button";
+import { Heart } from "lucide-react"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,11 +28,12 @@ export default function Navbar() {
           "flex w-full max-w-screen-2xl mx-auto top-2 items-center justify-between relative px-4 "
         )}
       >
-        <div className="flex items-center">
-          <Link href="/" className="text-2xl font-bold text-indigo-500">
-            Logo
-          </Link>
-        </div>
+            <div className="flex items-center">
+              <Heart className="h-5 w-5 text-orange-500 mr-2" />
+              <Link href="/" className="text-xl font-semibold text-orange-500">
+                Sambandharthi
+              </Link>
+            </div>
 
         <div className="hidden md:flex items-center space-x-4">
           {navItems.map((navItem, idx) => (
@@ -45,14 +48,21 @@ export default function Navbar() {
             </Link>
           ))}
 
-          <Link
-            href="/Donate"
-            className={cn(
-              "px-2 py-2 border border-neutral-600  rounded-full hover:bg-neutral-100 text-black "
-            )}
-          >
-            Donate Now
-          </Link>
+            <Link
+              href="/Donate"
+              onClick={toggleMenu}
+            >
+             <ShimmerButton
+                shimmerColor="#ff0000"
+                shimmerSize="0.05em"
+                shimmerDuration="2s"
+                borderRadius="50px"
+                background="rgba(249, 115, 32, 0.8)"
+            >
+                Donate Now
+            </ShimmerButton>
+
+            </Link>
         </div>
 
         <div className="md:hidden">
@@ -70,9 +80,10 @@ export default function Navbar() {
       >
         <div className="p-6">
           <div className="flex justify-between items-center">
-            <div>
-              <Link href="/" className="text-xl font-semibold text-indigo-500">
-                Logo
+            <div className="flex items-center">
+              <Heart className="h-5 w-5 text-orange-500 mr-2" />
+              <Link href="/" className="text-xl font-semibold text-orange-500">
+                Sambandharthi
               </Link>
             </div>
             <button onClick={toggleMenu} className="ml-4">
@@ -93,7 +104,7 @@ export default function Navbar() {
             ))}
 
             <Link
-              href="/donate"
+              href="/Donate"
               className="mt-4 px-4 py-2 border border-neutral-600  rounded-full hover:bg-neutral-100 "
               onClick={toggleMenu}
             >
@@ -103,7 +114,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      <Separator className="mt-3" />
+      <Separator className="mt-5" />
     </>
   );
 }

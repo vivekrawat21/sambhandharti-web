@@ -10,16 +10,15 @@ const S3 = new S3Client({
     secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
   },
 });
-console.log("Bucket Name:", process.env.R2_BUCKET_NAME);
 
 export async function POST(req: NextRequest) {
   try {
     const data = await req.formData();
-    console.log(data);
     const file = data.get("file") as File | null;
+    const category = data.get("category") as string | null;
 
-    if (!file) {
-      return NextResponse.json({ error: "No file provided" }, { status: 400 });
+    if (!file || !category) {
+      return NextResponse.json({ error: "File and category are required" }, { status: 400 });
     }
 
     const buffer = await file.arrayBuffer();
@@ -37,7 +36,8 @@ export async function POST(req: NextRequest) {
     const uploadedFile = await prisma.uploadedFile.create({
       data: {
         fileName,
-        url: `https://${process.env.R2_PUBLIC_URL}/${fileName}`,
+        url: `${process.env.R2_PUBLIC_URL}/${fileName}`,
+        category: category as "CHILDREN_SAFETY" | "WOMEN_SAFETY",
       },
     });
 
@@ -45,6 +45,7 @@ export async function POST(req: NextRequest) {
       success: true,
       fileName,
       fileId: uploadedFile.id,
+      category: uploadedFile.category,
     });
   } catch (error) {
     console.error("Error uploading file:", error);
@@ -53,9 +54,4 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
-}
-
-export async function GET(req: NextRequest) {
-  console.log(process.env.R2_SECRET_ACCESS_KEY);
-  return NextResponse.json({ message: "GET request" });
 }

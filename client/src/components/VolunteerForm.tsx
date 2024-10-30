@@ -37,66 +37,66 @@ export default function VolunteerForm ()  {
   };
 
   return (
-    <div className={`w-[70%] mx-auto flex items-center justify-center lg:w-[60%] xl:w-[40%] `}>
+    <div className={`min-h-screen w-[70%] mx-auto flex items-center justify-center lg:w-[60%] xl:w-[40%] `}>
       <div className="p-16 bg-white shadow-xl rounded-xl w-full">
         <form className="space-y-6" onSubmit={handleSubmit}>
-          <Input 
-            name="name" 
-            value={formValues.name} 
-            onChange={handleChange} 
-            placeholder="Name" 
-            className="w-full p-6" 
-            required 
+          <Input
+            name="name"
+            value={formValues.name}
+            onChange={handleChange}
+            placeholder="Name"
+            className="w-full p-6"
+            required
           />
-          <Input 
-            name="emailAddress" 
-            type="email" 
-            value={formValues.emailAddress} 
-            onChange={handleChange} 
-            placeholder="Email" 
-            className="w-full p-6" 
-            required 
+          <Input
+            name="emailAddress"
+            type="email"
+            value={formValues.emailAddress}
+            onChange={handleChange}
+            placeholder="Email"
+            className="w-full p-6"
+            required
           />
-          <Input 
-            name="phoneNumber" 
-            type="tel" 
-            value={formValues.phoneNumber} 
-            onChange={handleChange} 
-            placeholder="Phone" 
-            className="w-full p-6" 
-            required 
+          <Input
+            name="phoneNumber"
+            type="tel"
+            value={formValues.phoneNumber}
+            onChange={handleChange}
+            placeholder="Phone"
+            className="w-full p-6"
+            required
           />
-          <Input 
-            name="collegeOrWork" 
-            value={formValues.collegeOrWork} 
-            onChange={handleChange} 
-            placeholder="College/Working" 
-            className="w-full p-6" 
-            required 
+          <Input
+            name="collegeOrWork"
+            value={formValues.collegeOrWork}
+            onChange={handleChange}
+            placeholder="College/Working"
+            className="w-full p-6"
+            required
           />
-          <Textarea 
-            name="address" 
-            value={formValues.address} 
-            onChange={handleChange} 
-            placeholder="Address " 
-            className="w-full p-6" 
+          <Textarea
+            name="address"
+            value={formValues.address}
+            onChange={handleChange}
+            placeholder="Address "
+            className="w-full p-6"
           />
-          <Input 
+          <Input
             name="registrationDuration"
-            type="number" 
-            value={formValues.registrationDuration} 
-            onChange={handleChange} 
-            placeholder="Registration duration (in weeks)" 
-            className="w-full p-6" 
+            type="number"
+            value={formValues.registrationDuration}
+            onChange={handleChange}
+            placeholder="Registration duration (in weeks)"
+            className="w-full p-6"
           />
-          <Input 
-            name="paymentMethod" 
-            type="number" 
-            value={formValues.paymentMethod} 
-            onChange={handleChange} 
-            placeholder="₹ Enter Amount" 
-            className="w-full p-6" 
-            required 
+          <Input
+            name="paymentMethod"
+            type="number"
+            value={formValues.paymentMethod}
+            onChange={handleChange}
+            placeholder="₹ Enter Amount"
+            className="w-full p-6"
+            required
           />
           <Button type="submit" className="w-full bg-purple-500 hover:bg-purple-600 text-white p-3">
             Submit
@@ -106,5 +106,3 @@ export default function VolunteerForm ()  {
     </div>
   );
 };
-
-

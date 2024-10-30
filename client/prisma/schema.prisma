@@ -7,9 +7,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum SafetyCategory {
+  CHILDREN_SAFETY
+  WOMEN_SAFETY
+}
+
 model UploadedFile {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   fileName  String
   url       String
+  category  SafetyCategory @default(CHILDREN_SAFETY)
   uploadedAt DateTime @default(now())
+}
+
+model ContactMessage {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    name      String
+    email     String
+    phone     String
+    message   String?
+    createdAt DateTime @default(now())
 }

@@ -15,7 +15,7 @@ export function CardDemo(props: { title: string; description: string ;})  {
           "hover:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExamM4bjNtdm56ZzB4bDNscGtsZ3ZidmVoeDR6bXZncG5tanJkdTBwNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/jcRB9D1t8FPSUkudVy/giphy.gif)]",
           "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
           "transition-all duration-500"
-          
+
         )}
       >
         <div className="text relative z-50">

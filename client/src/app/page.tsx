@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import Carousel from "@/components/Carousel";
+import Carousel from "@/components/carouselImgSlider";
 
 import React from "react";
 import Testimonials from "@/components/Testimonials";
@@ -13,6 +13,7 @@ const page = () => {
       <Carousel className="relative z-0 sm:mt-0 mt-44 overflow-hidden" />
       <Testimonials/>
       <FounderNote/>
+      <Footer/>
     </div>
   );
 };
