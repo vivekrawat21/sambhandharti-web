@@ -1,4 +1,4 @@
-import Gallery from '@/components/Gallery';
+import Media from '@/components/Media';
 import prisma from "@/lib/prisma";
 
 async function getImages() {
@@ -18,7 +18,7 @@ async function getImages() {
 export default async function GalleryPage() {
   const initialImages = await getImages();
 
-  return <Gallery initialImages={initialImages} />;
+  return <Media initialImages={initialImages} />;
 }
 
 export const revalidate = 30;

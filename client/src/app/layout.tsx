@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-gradient-to-r from-green-50 via-violet-50 to-teal-50 antialiased",
+          "min-h-screen bg-gradient-to-b from-orange-50 to-white dark:from-gray-900 dark:to-gray-900",
           poppins.className
         )}
       >

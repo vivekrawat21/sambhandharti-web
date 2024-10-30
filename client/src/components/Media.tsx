@@ -18,7 +18,7 @@ interface GalleryProps {
   initialImages: Image[];
 }
 
-export default function Gallery({ initialImages }: GalleryProps) {
+export default function Media({ initialImages }: GalleryProps) {
   const [activeCategory, setActiveCategory] = useState("All Images");
   const [allImages, setAllImages] = useState<Image[]>(initialImages);
   const [loading, setLoading] = useState(false);
@@ -50,7 +50,7 @@ export default function Gallery({ initialImages }: GalleryProps) {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="font-bold text-xl sm:text-4xl mb-8 text-violet-500">
+      <h1 className="font-bold text-xl sm:text-4xl mb-8 text-orange-600 dark:text-orange-400">
         Media
       </h1>
       <div className="flex gap-4 mb-6 mx-8">
